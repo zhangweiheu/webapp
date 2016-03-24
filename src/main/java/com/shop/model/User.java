@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * graduation.user  
+ * shop.user  
  *
  * @author zhang
- * @date 2016-3-23
+ * @date 2016-3-24
  *
  */
 public class User implements Serializable {
@@ -26,6 +26,12 @@ public class User implements Serializable {
     /** 是否删除 */
     private Boolean isDelete;
 
+    /** 积分 */
+    private Integer integration;
+
+    /** 余额 */
+    private Integer balance;
+
     /** 头像 */
     private String avatar;
 
@@ -40,15 +46,6 @@ public class User implements Serializable {
 
     /** 微信号 */
     private String wechat;
-
-    /** 总得分 */
-    private Integer totalScore;
-
-    /** 总题量 */
-    private Integer totalDone;
-
-    /** 平均得分 */
-    private Integer averageScore;
 
     /** 创建时间 */
     private Date createAt;
@@ -98,6 +95,22 @@ public class User implements Serializable {
         this.isDelete = isDelete;
     }
 
+    public Integer getIntegration() {
+        return integration;
+    }
+
+    public void setIntegration(Integer integration) {
+        this.integration = integration;
+    }
+
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
+    }
+
     public String getAvatar() {
         return avatar;
     }
@@ -136,30 +149,6 @@ public class User implements Serializable {
 
     public void setWechat(String wechat) {
         this.wechat = wechat == null ? null : wechat.trim();
-    }
-
-    public Integer getTotalScore() {
-        return totalScore;
-    }
-
-    public void setTotalScore(Integer totalScore) {
-        this.totalScore = totalScore;
-    }
-
-    public Integer getTotalDone() {
-        return totalDone;
-    }
-
-    public void setTotalDone(Integer totalDone) {
-        this.totalDone = totalDone;
-    }
-
-    public Integer getAverageScore() {
-        return averageScore;
-    }
-
-    public void setAverageScore(Integer averageScore) {
-        this.averageScore = averageScore;
     }
 
     public Date getCreateAt() {

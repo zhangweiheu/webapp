@@ -16,14 +16,13 @@
     <script type="text/javascript" src="/asset/jquery/jquery-1.11.2.js"></script>
     <script>
         function goToTargetPage(tarVal) {
-            if (tarVal == 1) location.href = '/user';
-            if (tarVal == 2) location.href = '/exam';
-            if (tarVal == 3) location.href = '/paper';
-            if (tarVal == 4) location.href = '/rank';
-            if (tarVal == 5) location.href = '/analysis';
-            if (tarVal == 6) location.href = '/syatem_analysis';
-            if (tarVal == 7) location.href = '/system_user';
-            if (tarVal == 8) location.href = '/system_paper';
+            if (tarVal == 1) location.href = '/index';
+            if (tarVal == 2) location.href = '/cart';
+            if (tarVal == 3) location.href = '/order';
+            if (tarVal == 4) location.href = '/user';
+            if (tarVal == 5) location.href = '/system_order';
+            if (tarVal == 6) location.href = '/system_user';
+            if (tarVal == 7) location.href = '/system_goods';
         }
     </script>
 
@@ -64,11 +63,10 @@
     <script>
         $(
                 function () {
-                    var nav = " <li class=\"nav-item\" onclick=\"goToTargetPage(1)\"><a>我的资料</a></li>" +
-                            "<li class=\"nav-item\" onclick=\"goToTargetPage(2)\"><a>试题入口</a></li>" +
-                            "<li class=\"nav-item\" onclick=\"goToTargetPage(3)\"><a>我的试卷</a></li>" +
-                            "<li class=\"nav-item\" onclick=\"goToTargetPage(4)\"><a>我的排行榜</a></li>" +
-                            "<li class=\"nav-item\" onclick=\"goToTargetPage(5)\"><a>我的数据分析</a></li>";
+                    var nav = " <li class=\"nav-item\" onclick=\"goToTargetPage(1)\"><a>首页</a></li>" +
+                            "<li class=\"nav-item\" onclick=\"goToTargetPage(2)\"><a>我的购物车</a></li>" +
+                            "<li class=\"nav-item\" onclick=\"goToTargetPage(3)\"><a>我的订单</a></li>" +
+                            "<li class=\"nav-item\" onclick=\"goToTargetPage(4)\"><a>我的资料</a></li>";
                     if (document.cookie.length > 0) {
                         c_start = document.cookie.indexOf("_lpc=");
                         if (c_start != -1) {
@@ -76,17 +74,15 @@
                             c_end = document.cookie.indexOf(";", c_start);
                             if (c_end == -1) c_end = document.cookie.length
                             if (unescape(document.cookie.substring(c_start, c_end)) == "T") {
-                                nav = "";
-                                nav += "<li class=\"nav-item\" onclick=\"goToTargetPage(6)\"><a>系统数据分析</a></li>";
-                                nav += "<li class=\"nav-item\" onclick=\"goToTargetPage(7)\"><a>系统用户管理</a></li>";
-                                nav += "<li class=\"nav-item\" onclick=\"goToTargetPage(8)\"><a>系统试题管理</a></li>";
+                                nav += "<li class=\"nav-item\" onclick=\"goToTargetPage(5)\"><a>系统订单管理</a></li>";
+                                nav += "<li class=\"nav-item\" onclick=\"goToTargetPage(6)\"><a>系统用户管理</a></li>";
+                                nav += "<li class=\"nav-item\" onclick=\"goToTargetPage(7)\"><a>系统商品管理</a></li>";
                             }
                         }
                     }
                     $("#nav").html(nav);
                 }
-        )
-        ;
+        );
     </script>
 </head>
 <body>

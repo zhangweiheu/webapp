@@ -3,7 +3,7 @@ package com.shop.controller;
 
 import com.shop.geetest.GeetestConfig;
 import com.shop.geetest.GeetestLib;
-import com.shop.bean.LoginVo;
+import com.shop.bean.vo.LoginVo;
 import com.shop.model.User;
 import com.shop.service.UserService;
 import com.shop.util.TokenUtil;
@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  * Created by zhangwei on 16/1/13.
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/login")
 public class LoginController {
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
@@ -33,10 +33,10 @@ public class LoginController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String login() {
-        return "login";
+        return "index";
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public String index(@ModelAttribute LoginVo loginVo, HttpServletRequest request, HttpServletResponse response, ModelMap view) {
         LOGGER.info("{}请求登陆", loginVo.getUsername());
         int gtResult;

@@ -7,14 +7,13 @@
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="is_admin" property="isAdmin" jdbcType="BIT" />
     <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="integration" property="integration" jdbcType="INTEGER" />
+    <result column="balance" property="balance" jdbcType="INTEGER" />
     <result column="avatar" property="avatar" jdbcType="VARCHAR" />
     <result column="intro" property="intro" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="wechat" property="wechat" jdbcType="VARCHAR" />
-    <result column="total_score" property="totalScore" jdbcType="INTEGER" />
-    <result column="total_done" property="totalDone" jdbcType="INTEGER" />
-    <result column="average_score" property="averageScore" jdbcType="INTEGER" />
     <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
     <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -77,8 +76,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, username, password, is_admin, is_delete, avatar, intro, email, phone, wechat, 
-    total_score, total_done, average_score, create_at, update_at
+    id, username, password, is_admin, is_delete, integration, balance, avatar, intro, 
+    email, phone, wechat, create_at, update_at
   </sql>
   <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.shop.model.UserCondition" >
     select
@@ -118,15 +117,15 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into user (username, password, is_admin, 
-      is_delete, avatar, intro, 
-      email, phone, wechat, 
-      total_score, total_done, average_score, 
-      create_at, update_at)
+      is_delete, integration, balance, 
+      avatar, intro, email, 
+      phone, wechat, create_at, 
+      update_at)
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{isAdmin,jdbcType=BIT}, 
-      #{isDelete,jdbcType=BIT}, #{avatar,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, 
-      #{totalScore,jdbcType=INTEGER}, #{totalDone,jdbcType=INTEGER}, #{averageScore,jdbcType=INTEGER}, 
-      #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP})
+      #{isDelete,jdbcType=BIT}, #{integration,jdbcType=INTEGER}, #{balance,jdbcType=INTEGER}, 
+      #{avatar,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, #{createAt,jdbcType=TIMESTAMP}, 
+      #{updateAt,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.shop.model.User" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -146,6 +145,12 @@
       <if test="isDelete != null" >
         is_delete,
       </if>
+      <if test="integration != null" >
+        integration,
+      </if>
+      <if test="balance != null" >
+        balance,
+      </if>
       <if test="avatar != null" >
         avatar,
       </if>
@@ -160,15 +165,6 @@
       </if>
       <if test="wechat != null" >
         wechat,
-      </if>
-      <if test="totalScore != null" >
-        total_score,
-      </if>
-      <if test="totalDone != null" >
-        total_done,
-      </if>
-      <if test="averageScore != null" >
-        average_score,
       </if>
       <if test="createAt != null" >
         create_at,
@@ -190,6 +186,12 @@
       <if test="isDelete != null" >
         #{isDelete,jdbcType=BIT},
       </if>
+      <if test="integration != null" >
+        #{integration,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=INTEGER},
+      </if>
       <if test="avatar != null" >
         #{avatar,jdbcType=VARCHAR},
       </if>
@@ -204,15 +206,6 @@
       </if>
       <if test="wechat != null" >
         #{wechat,jdbcType=VARCHAR},
-      </if>
-      <if test="totalScore != null" >
-        #{totalScore,jdbcType=INTEGER},
-      </if>
-      <if test="totalDone != null" >
-        #{totalDone,jdbcType=INTEGER},
-      </if>
-      <if test="averageScore != null" >
-        #{averageScore,jdbcType=INTEGER},
       </if>
       <if test="createAt != null" >
         #{createAt,jdbcType=TIMESTAMP},
@@ -246,6 +239,12 @@
       <if test="record.isDelete != null" >
         is_delete = #{record.isDelete,jdbcType=BIT},
       </if>
+      <if test="record.integration != null" >
+        integration = #{record.integration,jdbcType=INTEGER},
+      </if>
+      <if test="record.balance != null" >
+        balance = #{record.balance,jdbcType=INTEGER},
+      </if>
       <if test="record.avatar != null" >
         avatar = #{record.avatar,jdbcType=VARCHAR},
       </if>
@@ -260,15 +259,6 @@
       </if>
       <if test="record.wechat != null" >
         wechat = #{record.wechat,jdbcType=VARCHAR},
-      </if>
-      <if test="record.totalScore != null" >
-        total_score = #{record.totalScore,jdbcType=INTEGER},
-      </if>
-      <if test="record.totalDone != null" >
-        total_done = #{record.totalDone,jdbcType=INTEGER},
-      </if>
-      <if test="record.averageScore != null" >
-        average_score = #{record.averageScore,jdbcType=INTEGER},
       </if>
       <if test="record.createAt != null" >
         create_at = #{record.createAt,jdbcType=TIMESTAMP},
@@ -288,14 +278,13 @@
       password = #{record.password,jdbcType=VARCHAR},
       is_admin = #{record.isAdmin,jdbcType=BIT},
       is_delete = #{record.isDelete,jdbcType=BIT},
+      integration = #{record.integration,jdbcType=INTEGER},
+      balance = #{record.balance,jdbcType=INTEGER},
       avatar = #{record.avatar,jdbcType=VARCHAR},
       intro = #{record.intro,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       wechat = #{record.wechat,jdbcType=VARCHAR},
-      total_score = #{record.totalScore,jdbcType=INTEGER},
-      total_done = #{record.totalDone,jdbcType=INTEGER},
-      average_score = #{record.averageScore,jdbcType=INTEGER},
       create_at = #{record.createAt,jdbcType=TIMESTAMP},
       update_at = #{record.updateAt,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -317,6 +306,12 @@
       <if test="isDelete != null" >
         is_delete = #{isDelete,jdbcType=BIT},
       </if>
+      <if test="integration != null" >
+        integration = #{integration,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null" >
+        balance = #{balance,jdbcType=INTEGER},
+      </if>
       <if test="avatar != null" >
         avatar = #{avatar,jdbcType=VARCHAR},
       </if>
@@ -331,15 +326,6 @@
       </if>
       <if test="wechat != null" >
         wechat = #{wechat,jdbcType=VARCHAR},
-      </if>
-      <if test="totalScore != null" >
-        total_score = #{totalScore,jdbcType=INTEGER},
-      </if>
-      <if test="totalDone != null" >
-        total_done = #{totalDone,jdbcType=INTEGER},
-      </if>
-      <if test="averageScore != null" >
-        average_score = #{averageScore,jdbcType=INTEGER},
       </if>
       <if test="createAt != null" >
         create_at = #{createAt,jdbcType=TIMESTAMP},
@@ -356,14 +342,13 @@
       password = #{password,jdbcType=VARCHAR},
       is_admin = #{isAdmin,jdbcType=BIT},
       is_delete = #{isDelete,jdbcType=BIT},
+      integration = #{integration,jdbcType=INTEGER},
+      balance = #{balance,jdbcType=INTEGER},
       avatar = #{avatar,jdbcType=VARCHAR},
       intro = #{intro,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       wechat = #{wechat,jdbcType=VARCHAR},
-      total_score = #{totalScore,jdbcType=INTEGER},
-      total_done = #{totalDone,jdbcType=INTEGER},
-      average_score = #{averageScore,jdbcType=INTEGER},
       create_at = #{createAt,jdbcType=TIMESTAMP},
       update_at = #{updateAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

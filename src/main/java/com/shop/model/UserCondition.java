@@ -445,6 +445,126 @@ public class UserCondition {
             return (Criteria) this;
         }
 
+        public Criteria andIntegrationIsNull() {
+            addCriterion("integration is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntegrationIsNotNull() {
+            addCriterion("integration is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntegrationEqualTo(Integer value) {
+            addCriterion("integration =", value, "integration");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntegrationNotEqualTo(Integer value) {
+            addCriterion("integration <>", value, "integration");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntegrationGreaterThan(Integer value) {
+            addCriterion("integration >", value, "integration");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntegrationGreaterThanOrEqualTo(Integer value) {
+            addCriterion("integration >=", value, "integration");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntegrationLessThan(Integer value) {
+            addCriterion("integration <", value, "integration");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntegrationLessThanOrEqualTo(Integer value) {
+            addCriterion("integration <=", value, "integration");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntegrationIn(List<Integer> values) {
+            addCriterion("integration in", values, "integration");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntegrationNotIn(List<Integer> values) {
+            addCriterion("integration not in", values, "integration");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntegrationBetween(Integer value1, Integer value2) {
+            addCriterion("integration between", value1, value2, "integration");
+            return (Criteria) this;
+        }
+
+        public Criteria andIntegrationNotBetween(Integer value1, Integer value2) {
+            addCriterion("integration not between", value1, value2, "integration");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceIsNull() {
+            addCriterion("balance is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceIsNotNull() {
+            addCriterion("balance is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceEqualTo(Integer value) {
+            addCriterion("balance =", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceNotEqualTo(Integer value) {
+            addCriterion("balance <>", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceGreaterThan(Integer value) {
+            addCriterion("balance >", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceGreaterThanOrEqualTo(Integer value) {
+            addCriterion("balance >=", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceLessThan(Integer value) {
+            addCriterion("balance <", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceLessThanOrEqualTo(Integer value) {
+            addCriterion("balance <=", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceIn(List<Integer> values) {
+            addCriterion("balance in", values, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceNotIn(List<Integer> values) {
+            addCriterion("balance not in", values, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceBetween(Integer value1, Integer value2) {
+            addCriterion("balance between", value1, value2, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceNotBetween(Integer value1, Integer value2) {
+            addCriterion("balance not between", value1, value2, "balance");
+            return (Criteria) this;
+        }
+
         public Criteria andAvatarIsNull() {
             addCriterion("avatar is null");
             return (Criteria) this;
@@ -792,186 +912,6 @@ public class UserCondition {
 
         public Criteria andWechatNotBetween(String value1, String value2) {
             addCriterion("wechat not between", value1, value2, "wechat");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalScoreIsNull() {
-            addCriterion("total_score is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalScoreIsNotNull() {
-            addCriterion("total_score is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalScoreEqualTo(Integer value) {
-            addCriterion("total_score =", value, "totalScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalScoreNotEqualTo(Integer value) {
-            addCriterion("total_score <>", value, "totalScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalScoreGreaterThan(Integer value) {
-            addCriterion("total_score >", value, "totalScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalScoreGreaterThanOrEqualTo(Integer value) {
-            addCriterion("total_score >=", value, "totalScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalScoreLessThan(Integer value) {
-            addCriterion("total_score <", value, "totalScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalScoreLessThanOrEqualTo(Integer value) {
-            addCriterion("total_score <=", value, "totalScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalScoreIn(List<Integer> values) {
-            addCriterion("total_score in", values, "totalScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalScoreNotIn(List<Integer> values) {
-            addCriterion("total_score not in", values, "totalScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalScoreBetween(Integer value1, Integer value2) {
-            addCriterion("total_score between", value1, value2, "totalScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalScoreNotBetween(Integer value1, Integer value2) {
-            addCriterion("total_score not between", value1, value2, "totalScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneIsNull() {
-            addCriterion("total_done is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneIsNotNull() {
-            addCriterion("total_done is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneEqualTo(Integer value) {
-            addCriterion("total_done =", value, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneNotEqualTo(Integer value) {
-            addCriterion("total_done <>", value, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneGreaterThan(Integer value) {
-            addCriterion("total_done >", value, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneGreaterThanOrEqualTo(Integer value) {
-            addCriterion("total_done >=", value, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneLessThan(Integer value) {
-            addCriterion("total_done <", value, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneLessThanOrEqualTo(Integer value) {
-            addCriterion("total_done <=", value, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneIn(List<Integer> values) {
-            addCriterion("total_done in", values, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneNotIn(List<Integer> values) {
-            addCriterion("total_done not in", values, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneBetween(Integer value1, Integer value2) {
-            addCriterion("total_done between", value1, value2, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneNotBetween(Integer value1, Integer value2) {
-            addCriterion("total_done not between", value1, value2, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andAverageScoreIsNull() {
-            addCriterion("average_score is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAverageScoreIsNotNull() {
-            addCriterion("average_score is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAverageScoreEqualTo(Integer value) {
-            addCriterion("average_score =", value, "averageScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andAverageScoreNotEqualTo(Integer value) {
-            addCriterion("average_score <>", value, "averageScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andAverageScoreGreaterThan(Integer value) {
-            addCriterion("average_score >", value, "averageScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andAverageScoreGreaterThanOrEqualTo(Integer value) {
-            addCriterion("average_score >=", value, "averageScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andAverageScoreLessThan(Integer value) {
-            addCriterion("average_score <", value, "averageScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andAverageScoreLessThanOrEqualTo(Integer value) {
-            addCriterion("average_score <=", value, "averageScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andAverageScoreIn(List<Integer> values) {
-            addCriterion("average_score in", values, "averageScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andAverageScoreNotIn(List<Integer> values) {
-            addCriterion("average_score not in", values, "averageScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andAverageScoreBetween(Integer value1, Integer value2) {
-            addCriterion("average_score between", value1, value2, "averageScore");
-            return (Criteria) this;
-        }
-
-        public Criteria andAverageScoreNotBetween(Integer value1, Integer value2) {
-            addCriterion("average_score not between", value1, value2, "averageScore");
             return (Criteria) this;
         }
 

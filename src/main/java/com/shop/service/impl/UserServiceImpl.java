@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserByUid(Integer uid) {
-        return (User) userDao.findById(uid);
+        return userDao.findById(uid);
     }
 
     @Override
