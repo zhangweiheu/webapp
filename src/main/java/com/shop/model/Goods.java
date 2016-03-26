@@ -1,5 +1,6 @@
 package com.shop.model;
 
+import com.shop.mybatis.enums.GoodsStatusEnum;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,7 +8,7 @@ import java.util.Date;
  * shop.goods  
  *
  * @author zhang
- * @date 2016-3-24
+ * @date 2016-3-26
  *
  */
 public class Goods implements Serializable {
@@ -28,6 +29,9 @@ public class Goods implements Serializable {
 
     /** 打折 */
     private Double discount;
+
+    /** 状态：0正常 | 1下架 | 2推荐  */
+    private GoodsStatusEnum status;
 
     /** 提供商ID */
     private Integer providerId;
@@ -92,6 +96,14 @@ public class Goods implements Serializable {
 
     public void setDiscount(Double discount) {
         this.discount = discount;
+    }
+
+    public GoodsStatusEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(GoodsStatusEnum status) {
+        this.status = status;
     }
 
     public Integer getProviderId() {

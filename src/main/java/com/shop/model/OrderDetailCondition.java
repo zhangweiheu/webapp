@@ -186,6 +186,66 @@ public class OrderDetailCondition {
             return (Criteria) this;
         }
 
+        public Criteria andUserIdIsNull() {
+            addCriterion("user_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIsNotNull() {
+            addCriterion("user_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdEqualTo(Integer value) {
+            addCriterion("user_id =", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotEqualTo(Integer value) {
+            addCriterion("user_id <>", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdGreaterThan(Integer value) {
+            addCriterion("user_id >", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("user_id >=", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdLessThan(Integer value) {
+            addCriterion("user_id <", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdLessThanOrEqualTo(Integer value) {
+            addCriterion("user_id <=", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIn(List<Integer> values) {
+            addCriterion("user_id in", values, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotIn(List<Integer> values) {
+            addCriterion("user_id not in", values, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdBetween(Integer value1, Integer value2) {
+            addCriterion("user_id between", value1, value2, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("user_id not between", value1, value2, "userId");
+            return (Criteria) this;
+        }
+
         public Criteria andOrderIdIsNull() {
             addCriterion("order_id is null");
             return (Criteria) this;
@@ -433,6 +493,66 @@ public class OrderDetailCondition {
 
         public Criteria andGoodsPriceNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("goods_price not between", value1, value2, "goodsPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceIsNull() {
+            addCriterion("total_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceIsNotNull() {
+            addCriterion("total_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceEqualTo(Integer value) {
+            addCriterion("total_price =", value, "totalPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceNotEqualTo(Integer value) {
+            addCriterion("total_price <>", value, "totalPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceGreaterThan(Integer value) {
+            addCriterion("total_price >", value, "totalPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceGreaterThanOrEqualTo(Integer value) {
+            addCriterion("total_price >=", value, "totalPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceLessThan(Integer value) {
+            addCriterion("total_price <", value, "totalPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceLessThanOrEqualTo(Integer value) {
+            addCriterion("total_price <=", value, "totalPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceIn(List<Integer> values) {
+            addCriterion("total_price in", values, "totalPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceNotIn(List<Integer> values) {
+            addCriterion("total_price not in", values, "totalPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceBetween(Integer value1, Integer value2) {
+            addCriterion("total_price between", value1, value2, "totalPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceNotBetween(Integer value1, Integer value2) {
+            addCriterion("total_price not between", value1, value2, "totalPrice");
             return (Criteria) this;
         }
 

@@ -3,7 +3,7 @@
  */
 particlesJS("particles-js", {
     particles: {
-        color: "#46BCF3",
+        color: '#F599BE',
         shape: "circle",
         opacity: 1,
         size: 1,

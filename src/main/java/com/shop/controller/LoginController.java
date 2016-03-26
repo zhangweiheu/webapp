@@ -1,6 +1,7 @@
 package com.shop.controller;
 
 
+import com.shop.annotation.NotNeedLogin;
 import com.shop.geetest.GeetestConfig;
 import com.shop.geetest.GeetestLib;
 import com.shop.bean.vo.LoginVo;
@@ -24,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  * Created by zhangwei on 16/1/13.
  */
 @Controller
+@NotNeedLogin
 @RequestMapping("/login")
 public class LoginController {
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
@@ -33,7 +35,7 @@ public class LoginController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String login() {
-        return "index";
+        return "login";
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)

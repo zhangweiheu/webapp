@@ -1,14 +1,14 @@
-package com.shop.enums;
+package com.shop.mybatis.enums;
 
-import com.shop.enums.mybatis.IEnumDesc;
-import com.shop.enums.mybatis.IEnumValue;
-import com.shop.enums.mybatis.ParseNameReplaceValue;
+import com.shop.mybatis.IEnumDesc;
+import com.shop.mybatis.IEnumValue;
+import com.shop.mybatis.ParseNameReplaceValue;
 
 @ParseNameReplaceValue
 public enum GoodsStatusEnum implements IEnumDesc, IEnumValue {
     NORMAL("正常", 0),
     REMOVE_SUPPORT("已撤架", 1),
-    PROBLEM("有问题", 2);
+    RECOMMEND("推荐", 2);
 
     private String desc;
     private int value;

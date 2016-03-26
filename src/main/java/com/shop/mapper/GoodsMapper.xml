@@ -8,6 +8,7 @@
     <result column="remain" property="remain" jdbcType="INTEGER" />
     <result column="sell_count" property="sellCount" jdbcType="INTEGER" />
     <result column="discount" property="discount" jdbcType="DOUBLE" />
+    <result column="status" property="status" jdbcType="TINYINT" />
     <result column="provider_id" property="providerId" jdbcType="INTEGER" />
     <result column="provider_name" property="providerName" jdbcType="VARCHAR" />
     <result column="provider_phone" property="providerPhone" jdbcType="INTEGER" />
@@ -73,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, price, remain, sell_count, discount, provider_id, provider_name, provider_phone, 
-    create_at, update_at
+    id, name, price, remain, sell_count, discount, status, provider_id, provider_name, 
+    provider_phone, create_at, update_at
   </sql>
   <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.shop.model.GoodsCondition" >
     select
@@ -114,13 +115,13 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into goods (name, price, remain, 
-      sell_count, discount, provider_id, 
-      provider_name, provider_phone, create_at, 
-      update_at)
+      sell_count, discount, status, 
+      provider_id, provider_name, provider_phone, 
+      create_at, update_at)
     values (#{name,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, #{remain,jdbcType=INTEGER}, 
-      #{sellCount,jdbcType=INTEGER}, #{discount,jdbcType=DOUBLE}, #{providerId,jdbcType=INTEGER}, 
-      #{providerName,jdbcType=VARCHAR}, #{providerPhone,jdbcType=INTEGER}, #{createAt,jdbcType=TIMESTAMP}, 
-      #{updateAt,jdbcType=TIMESTAMP})
+      #{sellCount,jdbcType=INTEGER}, #{discount,jdbcType=DOUBLE}, #{status,jdbcType=TINYINT}, 
+      #{providerId,jdbcType=INTEGER}, #{providerName,jdbcType=VARCHAR}, #{providerPhone,jdbcType=INTEGER}, 
+      #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.shop.model.Goods" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -142,6 +143,9 @@
       </if>
       <if test="discount != null" >
         discount,
+      </if>
+      <if test="status != null" >
+        status,
       </if>
       <if test="providerId != null" >
         provider_id,
@@ -174,6 +178,9 @@
       </if>
       <if test="discount != null" >
         #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
       </if>
       <if test="providerId != null" >
         #{providerId,jdbcType=INTEGER},
@@ -219,6 +226,9 @@
       <if test="record.discount != null" >
         discount = #{record.discount,jdbcType=DOUBLE},
       </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=TINYINT},
+      </if>
       <if test="record.providerId != null" >
         provider_id = #{record.providerId,jdbcType=INTEGER},
       </if>
@@ -247,6 +257,7 @@
       remain = #{record.remain,jdbcType=INTEGER},
       sell_count = #{record.sellCount,jdbcType=INTEGER},
       discount = #{record.discount,jdbcType=DOUBLE},
+      status = #{record.status,jdbcType=TINYINT},
       provider_id = #{record.providerId,jdbcType=INTEGER},
       provider_name = #{record.providerName,jdbcType=VARCHAR},
       provider_phone = #{record.providerPhone,jdbcType=INTEGER},
@@ -274,6 +285,9 @@
       <if test="discount != null" >
         discount = #{discount,jdbcType=DOUBLE},
       </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
       <if test="providerId != null" >
         provider_id = #{providerId,jdbcType=INTEGER},
       </if>
@@ -299,6 +313,7 @@
       remain = #{remain,jdbcType=INTEGER},
       sell_count = #{sellCount,jdbcType=INTEGER},
       discount = #{discount,jdbcType=DOUBLE},
+      status = #{status,jdbcType=TINYINT},
       provider_id = #{providerId,jdbcType=INTEGER},
       provider_name = #{providerName,jdbcType=VARCHAR},
       provider_phone = #{providerPhone,jdbcType=INTEGER},

@@ -1,8 +1,8 @@
-package com.shop.enums;
+package com.shop.mybatis.enums;
 
-import com.shop.enums.mybatis.IEnumDesc;
-import com.shop.enums.mybatis.IEnumValue;
-import com.shop.enums.mybatis.ParseNameReplaceValue;
+import com.shop.mybatis.IEnumDesc;
+import com.shop.mybatis.IEnumValue;
+import com.shop.mybatis.ParseNameReplaceValue;
 
 @ParseNameReplaceValue
 public enum PassStatusEnum implements IEnumDesc, IEnumValue {

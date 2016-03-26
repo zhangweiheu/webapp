@@ -17,7 +17,7 @@ import java.util.List;
 @Repository
 public class UserDaoImpl implements UserDao {
     @Autowired
-    private UserMapper userMapper;
+    UserMapper userMapper;
 
     @Override
     public List<User> listAllUser(int offset, int size) {
@@ -32,7 +32,7 @@ public class UserDaoImpl implements UserDao {
         UserCondition condition = new UserCondition();
         condition.createCriteria().andUsernameEqualTo(name);
         List<User> userList = userMapper.selectByCondition(condition);
-        return userList.size() > 0 ? userList.get(0) : null;
+        return null == userList || userList.size() == 0 ? null : userList.get(0);
     }
 
     @Override

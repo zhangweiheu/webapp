@@ -1,6 +1,6 @@
 package com.shop.model;
 
-import com.shop.enums.PassStatusEnum;
+import com.shop.mybatis.enums.PassStatusEnum;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,7 +8,7 @@ import java.util.Date;
  * shop.pass  
  *
  * @author zhang
- * @date 2016-3-24
+ * @date 2016-3-26
  *
  */
 public class Pass implements Serializable {

@@ -10,6 +10,8 @@ import java.util.List;
  */
 
 public interface GoodsService {
+    Goods findGoodsById(int gid);
+
     int getTotalCount();
 
     boolean deleteGoodsById(int Gid);

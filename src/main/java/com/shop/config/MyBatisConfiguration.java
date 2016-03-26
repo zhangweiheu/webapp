@@ -1,6 +1,6 @@
 package com.shop.config;
 
-import com.shop.enums.mybatis.MybatisSqlSessionFactoryBean;
+import com.shop.mybatis.MybatisSqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,10 +15,10 @@ import org.springframework.context.annotation.Import;
 public class MyBatisConfiguration {
     public static final String SQL_SESSION_FACTORY_NAME = "com_shop_SqlSessionFactory";
 
-    private String enumBasePackages = "com.shop.enums";
+    private String enumBasePackages = "com.shop.mybatis.enums";
 
     @Bean(name = MyBatisConfiguration.SQL_SESSION_FACTORY_NAME)
-    public MybatisSqlSessionFactoryBean exams_online_MybatisSqlSessionFactoryBean(CoreDataSourceConfiguration config) {
+    public MybatisSqlSessionFactoryBean com_shop_MybatisSqlSessionFactoryBean(CoreDataSourceConfiguration config) {
         MybatisSqlSessionFactoryBean sessionFactoryBean = new MybatisSqlSessionFactoryBean();
         sessionFactoryBean.setDataSource(config.core_dataSource());
         sessionFactoryBean.setEnumBasePackages(enumBasePackages);

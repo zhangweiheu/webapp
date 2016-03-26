@@ -10,13 +10,13 @@ import java.util.List;
  */
 
 public interface CartService {
-    int getTotalCount();
+    int getTotalCountByUid(int uid);
 
-    boolean deleteCartByODid(int ODid);
+    int deleteCartByODid(int ODid);
 
     int saveCart(OrderDetail orderDetail);
 
     int updateCart(OrderDetail orderDetail);
 
-    List<OrderDetail> listAllCart(int offset, int pageSize);
+    List<OrderDetail> listUserAllCart(int offset, int pageSize,int uid);
 }

@@ -19,7 +19,6 @@ public class CartController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String cart(ModelMap view) {
-
         return "cart";
     }
 }

@@ -18,7 +18,13 @@ public class IndexController {
     private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public ModelAndView cart(ModelAndView view) {
+    public ModelAndView index(ModelAndView view) {
+        view.setViewName("index");
+        return view;
+    }
+
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public ModelAndView index1(ModelAndView view) {
         view.setViewName("index");
         return view;
     }

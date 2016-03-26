@@ -1,6 +1,6 @@
 package com.shop.model;
 
-import com.shop.enums.ExpressStatusEnum;
+import com.shop.mybatis.enums.ExpressStatusEnum;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

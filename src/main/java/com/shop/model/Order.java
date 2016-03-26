@@ -1,6 +1,6 @@
 package com.shop.model;
 
-import com.shop.enums.ExpressStatusEnum;
+import com.shop.mybatis.enums.ExpressStatusEnum;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,7 +8,7 @@ import java.util.Date;
  * shop.order  
  *
  * @author zhang
- * @date 2016-3-24
+ * @date 2016-3-26
  *
  */
 public class Order implements Serializable {

@@ -21,16 +21,15 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 public class CoreDataSourceConfiguration implements TransactionManagementConfigurer {
-    public static final String ONLINE_EXAMS_TM = "online_exams_tm";
+    public static final String ONLINE_EXAMS_TM = "com_shop_tm";
 
     @Bean(destroyMethod = "close")
     public DataSource core_dataSource() {
         DruidDataSource druidDataSource = new DruidDataSource();
         try {
-            druidDataSource.setUsername("zhangwei");
-            druidDataSource.setPassword("zhangwei");
+            druidDataSource.setUsername("yangyu");
+            druidDataSource.setPassword("yangyu");
             druidDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-//            druidDataSource.setUrl("jdbc:mysql://45.32.48.131:3306/shop?autoCommit=true&autoReconnect=true&useUnicode=true&tinyInt1isBit=false&zeroDateTimeBehavior=round&characterEncoding=UTF-8&yearIsDateType=false");
             druidDataSource.setUrl("jdbc:mysql://192.168.1.115:3306/shop?autoCommit=true&autoReconnect=true&useUnicode=true&tinyInt1isBit=false&zeroDateTimeBehavior=round&characterEncoding=UTF-8&yearIsDateType=false");
             druidDataSource.setConnectionProperties("druid.stat.mergeSql=true");
             druidDataSource.setFilters("stat,wall"); // 配置监控统计拦截的filters

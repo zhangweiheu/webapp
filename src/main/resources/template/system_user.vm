@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="/images/java.png"/>
 </head>
 <body>
-    #include("./navidate.vm")
+    #include("./navigate.vm")
 
 <div style="font-weight: bold; margin: 0px auto; width: 90%;">
     <span class="head-btn"><a href="#" btn-type="add"><img src="/images/add.png" width="20px" height="20px"/>新增</a></span>

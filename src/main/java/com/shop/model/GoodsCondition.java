@@ -1,5 +1,6 @@
 package com.shop.model;
 
+import com.shop.mybatis.enums.GoodsStatusEnum;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -492,6 +493,66 @@ public class GoodsCondition {
 
         public Criteria andDiscountNotBetween(Double value1, Double value2) {
             addCriterion("discount not between", value1, value2, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIsNull() {
+            addCriterion("status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIsNotNull() {
+            addCriterion("status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusEqualTo(GoodsStatusEnum value) {
+            addCriterion("status =", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotEqualTo(GoodsStatusEnum value) {
+            addCriterion("status <>", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusGreaterThan(GoodsStatusEnum value) {
+            addCriterion("status >", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusGreaterThanOrEqualTo(GoodsStatusEnum value) {
+            addCriterion("status >=", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusLessThan(GoodsStatusEnum value) {
+            addCriterion("status <", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusLessThanOrEqualTo(GoodsStatusEnum value) {
+            addCriterion("status <=", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIn(List<GoodsStatusEnum> values) {
+            addCriterion("status in", values, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotIn(List<GoodsStatusEnum> values) {
+            addCriterion("status not in", values, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusBetween(GoodsStatusEnum value1, GoodsStatusEnum value2) {
+            addCriterion("status between", value1, value2, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotBetween(GoodsStatusEnum value1, GoodsStatusEnum value2) {
+            addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }
 

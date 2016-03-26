@@ -1,4 +1,4 @@
-package com.shop.enums.mybatis;
+package com.shop.mybatis;
 
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;

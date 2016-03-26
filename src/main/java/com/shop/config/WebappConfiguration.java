@@ -34,7 +34,7 @@ import java.util.Properties;
 @Configuration
 @EnableAutoConfiguration
 @Import({MyBatisConfiguration.class})
-@ComponentScan(basePackageClasses = {com.shop.service.Pkg.class,com.shop.dao.Pkg.class,com.shop.controller.Pkg.class})
+@ComponentScan(basePackageClasses = {com.shop.dao.Pkg.class,com.shop.service.Pkg.class,com.shop.controller.Pkg.class})
 public class WebappConfiguration extends AbstractWebMvcConfiguration {
 
 

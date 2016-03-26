@@ -1,4 +1,4 @@
-package com.shop.enums.mybatis;
+package com.shop.mybatis;
 
 import org.apache.ibatis.builder.xml.XMLMapperBuilder;
 import org.apache.ibatis.executor.ErrorContext;

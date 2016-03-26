@@ -1,6 +1,7 @@
 package com.shop.dao.impl;
 
 import com.shop.dao.GoodsDao;
+import com.shop.mybatis.enums.GoodsStatusEnum;
 import com.shop.mapper.GoodsMapper;
 import com.shop.model.Goods;
 import com.shop.model.GoodsCondition;
@@ -20,37 +21,42 @@ public class GoodsDaoImpl implements GoodsDao {
 
     @Override
     public List<Goods> listAllGoods(int offset, int pageSize) {
-        return null;
+        Goods goods = new Goods();
+        goods.setStatus(GoodsStatusEnum.NORMAL);
+        return goodsMapper.selectByCondition(convertGoodsAttr2Condition(offset, pageSize, goods));
     }
 
     @Override
     public int countAllGoodsByAttr(Goods goods) {
-        return 0;
+        return goodsMapper.countByCondition(convertGoodsAttr2Condition(null, null, goods));
     }
 
     @Override
     public List<Goods> listGoodsByAttr(int offset, int pageSize, Goods goods) {
-        return null;
+        return goodsMapper.selectByCondition(convertGoodsAttr2Condition(offset, pageSize, goods));
     }
 
     @Override
     public Goods findGoodsById(int Gid) {
-        return null;
+        return goodsMapper.selectById(Gid);
     }
 
     @Override
     public int deleteGoodsById(int Gid) {
-        return 0;
+        Goods goods = new Goods();
+        goods.setId(Gid);
+        goods.setStatus(GoodsStatusEnum.REMOVE_SUPPORT);
+        return goodsMapper.updateById(goods);
     }
 
     @Override
     public int updateGoods(Goods goods) {
-        return 0;
+        return goodsMapper.updateById(goods);
     }
 
     @Override
     public int saveGoods(Goods goods) {
-        return 0;
+        return goodsMapper.insert(goods);
     }
 
     private GoodsCondition convertGoodsAttr2Condition(Integer offset, Integer pageSize, Goods goods) {
@@ -95,6 +101,11 @@ public class GoodsDaoImpl implements GoodsDao {
         if (null != goods.getRemain()) {
             condition.createCriteria().andRemainEqualTo(goods.getRemain());
         }
+
+        if (null != goods.getStatus()) {
+            condition.createCriteria().andStatusEqualTo(goods.getStatus());
+        }
+
         if (null != goods.getSellCount()) {
             condition.createCriteria().andSellCountEqualTo(goods.getSellCount());
         }

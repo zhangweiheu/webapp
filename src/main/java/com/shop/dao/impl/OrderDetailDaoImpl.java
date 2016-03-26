@@ -88,6 +88,10 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
         if (null != orderDetail.getGoodsPrice()) {
             condition.createCriteria().andGoodsPriceEqualTo(orderDetail.getGoodsPrice());
         }
+
+        if (null != orderDetail.getUserId()) {
+            condition.createCriteria().andUserIdEqualTo(orderDetail.getUserId());
+        }
         return condition;
     }
 }

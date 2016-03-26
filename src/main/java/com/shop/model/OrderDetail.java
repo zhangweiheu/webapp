@@ -8,12 +8,15 @@ import java.util.Date;
  * shop.order_detail  
  *
  * @author zhang
- * @date 2016-3-24
+ * @date 2016-3-26
  *
  */
 public class OrderDetail implements Serializable {
     /**  */
     private Integer id;
+
+    /** 用户id:购物车时才有值 */
+    private Integer userId;
 
     /** 关联订单id */
     private Integer orderId;
@@ -26,6 +29,9 @@ public class OrderDetail implements Serializable {
 
     /** 商品价格 */
     private BigDecimal goodsPrice;
+
+    /** 本单总价 */
+    private Integer totalPrice;
 
     /** 更新时间 */
     private Date updateAt;
@@ -41,6 +47,14 @@ public class OrderDetail implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getOrderId() {
@@ -73,6 +87,14 @@ public class OrderDetail implements Serializable {
 
     public void setGoodsPrice(BigDecimal goodsPrice) {
         this.goodsPrice = goodsPrice;
+    }
+
+    public Integer getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Integer totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Date getUpdateAt() {

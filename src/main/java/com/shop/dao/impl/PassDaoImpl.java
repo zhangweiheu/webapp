@@ -19,6 +19,11 @@ public class PassDaoImpl implements PassDao {
     PassMapper passMapper;
 
     @Override
+    public int countPassByAttr(Pass pass) {
+        return passMapper.countByCondition(convertPassAttr2Condition(null, null, pass));
+    }
+
+    @Override
     public Pass findPassById(int pid) {
         return passMapper.selectById(pid);
     }
@@ -34,8 +39,8 @@ public class PassDaoImpl implements PassDao {
     }
 
     @Override
-    public List<Pass> listAllPassByAttr(Pass pass) {
-        return passMapper.selectByCondition(convertPassAttr2Condition(null,null,pass));
+    public List<Pass> listAllPassByAttr(Integer offset, Integer pageSize, Pass pass) {
+        return passMapper.selectByCondition(convertPassAttr2Condition(offset, pageSize, pass));
     }
 
     private PassCondition convertPassAttr2Condition(Integer offset, Integer pageSize, Pass pass) {

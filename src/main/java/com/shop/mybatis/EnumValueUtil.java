@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.shop.enums.mybatis;
+package com.shop.mybatis;
 
 /**
  * 枚举工具类
