@@ -2,12 +2,12 @@ package com.shop.controller;
 
 
 import com.shop.annotation.NotNeedLogin;
-import com.shop.geetest.GeetestConfig;
-import com.shop.geetest.GeetestLib;
+import com.shop.core.geetest.GeetestConfig;
+import com.shop.core.geetest.GeetestLib;
 import com.shop.bean.vo.LoginVo;
-import com.shop.model.User;
-import com.shop.service.UserService;
-import com.shop.util.TokenUtil;
+import com.shop.core.model.User;
+import com.shop.core.service.UserService;
+import com.shop.core.util.TokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

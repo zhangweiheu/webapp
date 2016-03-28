@@ -1,8 +1,8 @@
 package com.shop.spring;
 
 import com.shop.bean.JsonResponse;
-import com.shop.exception.BusinessException;
-import com.shop.exception.LoggedBusinessException;
+import com.shop.core.exception.BusinessException;
+import com.shop.core.exception.LoggedBusinessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.TypeMismatchException;

@@ -1,8 +1,10 @@
 package com.shop.config;
 
+
 import com.shop.Interceptor.ExceptionInterceptor;
 import com.shop.Interceptor.LoginCheckInterceptor;
 import com.shop.Interceptor.PrivilegeInterceptor;
+import com.shop.core.config.CoreApplication;
 import com.shop.spring.AbstractWebMvcConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -33,10 +35,9 @@ import java.util.Properties;
  */
 @Configuration
 @EnableAutoConfiguration
-@Import({MyBatisConfiguration.class})
-@ComponentScan(basePackageClasses = {com.shop.dao.Pkg.class,com.shop.service.Pkg.class,com.shop.controller.Pkg.class})
+@Import({CoreApplication.class})
+@ComponentScan(basePackageClasses = {com.shop.controller.Pkg.class})
 public class WebappConfiguration extends AbstractWebMvcConfiguration {
-
 
     @Configuration
     public static class CustomConversionService extends DelegatingWebMvcConfiguration {

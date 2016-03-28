@@ -82,7 +82,7 @@ function edit_tmpl(uid) {
         title: '编辑用户',
         shadeClose: true,
         shade: 0.5,
-        content: '/user/edit/' + uid,
+        content: '/system/user/edit/' + uid,
         area: ['70%', '80%'],
         end: function () {
             buildTable($('#page').val(), $('#pageSize').val());
@@ -91,7 +91,7 @@ function edit_tmpl(uid) {
 }
 
 function add_tmpl() {
-    buildCommonLayer('新增用户', '/user/edit/0');
+    buildCommonLayer('新增用户', '/system/user/edit/0');
 }
 
 $(function () {
@@ -126,7 +126,7 @@ function deleteRecord(id) {
 function remove(id) {
     $.ajax({
         method: "DELETE",
-        url: "/api/user/" + id,
+        url: "/api/system/user/" + id,
         async: true,
         success: function (data) {
             if (data.code == 0) {

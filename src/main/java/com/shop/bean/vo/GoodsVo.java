@@ -1,49 +1,80 @@
 package com.shop.bean.vo;
 
 import com.shop.bean.BaseObject;
-import com.shop.mybatis.enums.GoodsStatusEnum;
+import com.shop.core.mybatis.enums.GoodsStatusEnum;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 
 /**
  * Created by zhang on 2016/3/25.
  */
-public class GoodsVo extends BaseObject{
-    /** 主键 */
+public class GoodsVo extends BaseObject {
+    /**
+     * 主键
+     */
     private Integer id;
 
-    /** 商品名称 */
+    /**
+     * 商品名称
+     */
     private String name;
 
-    /** 价格 */
+    /**
+     * 价格
+     */
     private Double price;
 
-    /** 剩余数量 */
+    /**
+     * 剩余数量
+     */
     private Integer remain;
 
-    /** 销售量 */
+    /**
+     * 销售量
+     */
     private Integer sellCount;
 
-    /** 打折 */
+    /**
+     * 打折
+     */
     private Double discount;
 
-    /** 状态：0正常 | 1下架 | 2推荐  */
+    /**
+     * 状态：0正常 | 1下架 | 2推荐
+     */
     private GoodsStatusEnum status;
 
-    /** 提供商ID */
+    /**
+     * 提供商ID
+     */
     private Integer providerId;
 
-    /** 提供商姓名 */
+    /**
+     * 提供商姓名
+     */
     private String providerName;
 
-    /** 提供商联系方式 */
+    /**
+     * 提供商联系方式
+     */
     private Integer providerPhone;
 
-    /** 创建时间 */
+    /**
+     * 创建时间
+     */
     private Date createAt;
 
-    /** 更新时间 */
+    /**
+     * 更新时间
+     */
     private Date updateAt;
+
+    /**file*/
+    private MultipartFile file;
+
+    /** 商品图片 */
+    private String linkPhoto;
 
     public Integer getId() {
         return id;
@@ -139,5 +170,21 @@ public class GoodsVo extends BaseObject{
 
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
+    public String getLinkPhoto() {
+        return linkPhoto;
+    }
+
+    public void setLinkPhoto(String linkPhoto) {
+        this.linkPhoto = linkPhoto;
     }
 }

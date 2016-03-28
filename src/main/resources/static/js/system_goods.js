@@ -25,7 +25,7 @@ function buildTable(page, pageSize) {
     $('#page').val(page);
     $.ajax({
         method: "GET",
-        url: "/api/goods",
+        url: "/api/system/goods",
         async: true,
         data: {"page": page, "pageSize": pageSize},
         dataType: "json",
@@ -74,7 +74,7 @@ function edit_tmpl(qid) {
         title: '编辑商品',
         shadeClose: true,
         shade: 0.5,
-        content: '/goods/edit/' + qid,
+        content: '/system/goods/edit/' + qid,
         area: ['70%', '80%'],
         end: function () {
             buildTable($('#page').val(), $('#pageSize').val());
@@ -83,7 +83,7 @@ function edit_tmpl(qid) {
 }
 
 function add_tmpl() {
-    buildCommonLayer('新增商品', '/goods/edit/0');
+    buildCommonLayer('新增商品', '/system/goods/edit/0');
 }
 
 $(function () {
@@ -118,7 +118,7 @@ function deleteRecord(qid) {
 function remove(qid) {
     $.ajax({
         method: "DELETE",
-        url: "/api/goods/" + qid,
+        url: "/api/system/goods/" + qid,
         async: true,
         success: function (data) {
             if (data.code == 0) {

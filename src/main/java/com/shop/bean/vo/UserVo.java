@@ -8,50 +8,79 @@ import java.util.Date;
 /**
  * Created by zhang on 2016/3/24.
  */
-public class UserVo extends BaseObject{
+public class UserVo extends BaseObject {
 
-    /** id */
+    /**
+     * id
+     */
     private Integer id;
 
-    /** 用户名 */
+    /**
+     * 用户名
+     */
     private String username;
 
-    /** 密码 */
+    /**
+     * 密码
+     */
     private String password;
 
-    /** 身份标识，普通用户：0|管理员：1 */
+    /**
+     * 身份标识，普通用户：0|管理员：1
+     */
     private Boolean isAdmin;
 
-    /** 是否删除 */
+    /**
+     * 是否删除
+     */
     private Boolean isDelete;
 
-    /** 积分 */
+    /**
+     * 积分
+     */
     private Integer integration;
 
-    /** 余额 */
+    /**
+     * 余额
+     */
     private Integer balance;
 
-    /** 头像 */
+    /**
+     * 头像
+     */
     private String avatar;
 
-    /** 简介 */
+    /**
+     * 简介
+     */
     private String intro;
 
-    /** 邮箱 */
+    /**
+     * 邮箱
+     */
     private String email;
 
-    /** 手机号 */
+    /**
+     * 手机号
+     */
     private String phone;
 
-    /** 微信号 */
+    /**
+     * 微信号
+     */
     private String wechat;
 
-    /** 创建时间 */
+    /**
+     * 创建时间
+     */
     private Date createAt;
 
-    /** 更新时间 */
+    /**
+     * 更新时间
+     */
     private Date updateAt;
 
+    /**file*/
     private MultipartFile file;
 
     public Integer getId() {

@@ -2,9 +2,9 @@ package com.shop.controller;
 
 import com.shop.annotation.NotNeedLogin;
 import com.shop.bean.vo.UserVo;
-import com.shop.model.User;
-import com.shop.service.UserService;
-import com.shop.util.PhotoUploadUtil;
+import com.shop.core.model.User;
+import com.shop.core.service.UserService;
+import com.shop.core.util.PhotoUploadUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -13,8 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +41,8 @@ public class RegisterController {
         if (null == userService.findUserByName(userVo.getUsername())) {
             User user = new User();
             BeanUtils.copyProperties(userVo, user);
-
+            user.setIsAdmin(false);
+            user.setIsDelete(false);
             int uid = userService.saveUser(user);
 
             if (null != userVo.getFile()) {

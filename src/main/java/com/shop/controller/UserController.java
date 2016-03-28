@@ -3,9 +3,9 @@ package com.shop.controller;
 import com.shop.annotation.LoginRequired;
 import com.shop.bean.UserHolder;
 import com.shop.bean.vo.UserVo;
-import com.shop.model.User;
-import com.shop.service.UserService;
-import com.shop.util.PhotoUploadUtil;
+import com.shop.core.model.User;
+import com.shop.core.service.UserService;
+import com.shop.core.util.PhotoUploadUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -49,6 +49,6 @@ public class UserController {
         BeanUtils.copyProperties(userVo, user);
         user.setAvatar(PhotoUploadUtil.uploadPhoto(userVo.getFile(), request, user.getId()));
         userService.updateUser(user);
-        return "redirect:";
+        return "redirect:edit";
     }
 }

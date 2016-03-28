@@ -25,7 +25,7 @@ function buildTable(page, pageSize) {
     $('#page').val(page);
     $.ajax({
         method: "GET",
-        url: "/api/system/goods",
+        url: "/api/system/order/list",
         async: true,
         data: {"page": page, "pageSize": pageSize},
         dataType: "json",
@@ -39,25 +39,20 @@ function buildTable(page, pageSize) {
                         if (i < curPageSize) {
                             var elem = data.data.data[i];
                             tbody += "<tr>";
-                            tbody += "<td style='border-left:1px solid #C1DAD7'>" + elem.id + "</td>";
-                            tbody += "<td style='width:auto'>" + elem.name + "</td>";
-                            tbody += "<td style='width:150px'>" + elem.price + "</td>";
-                            tbody += "<td style='width:auto'>" + elem.remain + "</td>";
-                            tbody += "<td style='width:auto'>" + elem.sellCount + "</td>";
-                            tbody += "<td style='width:50px'>" + elem.discount + "</td>";
-                            tbody += "<td style='width:60px'>" + elem.status + "</td>";
-                            tbody += "<td style='width:50px'>" + elem.providerName + "</td>";
-                            tbody += "<td style='width:50px'>" + elem.providerPhone + "</td>";
-                            tbody += "<td style='width:90px'>" + elem.properties.createTime + "</td>";
-                            tbody += "<td class='fixWid'><a btn-type=\"edit\" qid=\"" + elem.id + "\" href=\"#\">编辑</a></td>";
-                            tbody += "<td class='fixWid'><a  onclick=\"deleteRecord('" + elem.id + "')\"   btn-type=\"delete\" qid=\"" + elem.id + "\" href=\"#\">删除</a></td>";
+                            tbody += "<td width='50px'>" + elem.id + "</td>";
+                            tbody += "<td width='50px'>" + elem.userId + "</td>";
+                            tbody += "<td width='50px'>" + elem.orderPrice + "</td>";
+                            tbody += "<td width='50px'>" + elem.expressStatus + "</td>";
+                            tbody += "<td>" + elem.properties.createTime + "</td>";
+                            tbody += "<td width='50px'><a btn-type=\"edit\" pid=\""+elem.id +"\" href=\"#\">编辑</a></td>";
+                            tbody += "<td width='50px'><a  onclick=\"deleteRecord('" + elem.id + "')\"   btn-type=\"delete\" pid=\"" + elem.id + "\" href=\"#\">删除</a></td>";
                             tbody += "</tr>";
                         } else {
                             //超出部分
                             tbody += "<tr></tr>";
                         }
                     }
-                    $("#system-goods-tbody").html(tbody)
+                    $("#system-order-tbody").html(tbody)
                     ;
                     buildPager(data.data.totalCount, data.data.page, data.data.pageSize);
                 }
@@ -68,22 +63,24 @@ function buildTable(page, pageSize) {
     });
 }
 
-function edit_tmpl(qid) {
-    layer.open({
-        type: 2,
-        title: '编辑商品',
-        shadeClose: true,
-        shade: 0.5,
-        content: '/system/goods/edit/' + qid,
-        area: ['70%', '80%'],
-        end: function () {
-            buildTable($('#page').val(), $('#pageSize').val());
+function edit_tmpl(pid) {
+    $.ajax({
+        method: "PUT",
+        url: "/api/system/order/0/" + pid,
+        async: true,
+        success: function (data) {
+            if (data.code == 0) {
+                layer.alert(data.data, {
+                    icon: 1, offset: '150px', end: function () {
+                        location.reload(true);
+                    }
+                });
+            } else {
+                layer.alert(data.msg, {icon: 11, offset: '150px'})
+            }
         }
     });
-}
 
-function add_tmpl() {
-    buildCommonLayer('新增商品', '/system/goods/edit/0');
 }
 
 $(function () {
@@ -93,12 +90,8 @@ $(function () {
     buildTable(page, pageSize);
 
     $(document).delegate("a[btn-type='edit']", "click", function () {
-        var qid = $(this)[0].getAttribute("qid");
-        edit_tmpl(qid);
-    });
-
-    $(document).delegate("a[btn-type='add']", "click", function () {
-        add_tmpl();
+        var pid = $(this)[0].getAttribute("pid");
+        edit_tmpl(pid);
     });
 
     $('#tmpl-select').on('change', function () {
@@ -108,17 +101,17 @@ $(function () {
         buildTable(page, pageSize);
     });
 });
-function deleteRecord(qid) {
+function deleteRecord(id) {
     layer.confirm('确认删除？', {
         icon: 4, offset: '150px', yes: function () {
-            remove(qid);
+            remove(id);
         }
     });
 }
-function remove(qid) {
+function remove(id) {
     $.ajax({
         method: "DELETE",
-        url: "/api/system/goods/" + qid,
+        url: "/api/system/order/" + id,
         async: true,
         success: function (data) {
             if (data.code == 0) {

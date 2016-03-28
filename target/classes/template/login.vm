@@ -8,6 +8,7 @@
     <link type="text/css" rel="stylesheet" href="/css/simplePagination.css"/>
     <link rel="stylesheet" type="text/css" href="/css/login.css"/>
     <link rel="stylesheet" type="text/css" href="/css/online.css"/>
+    <link rel="shortcut icon" href="/images/mz.png"/>
 </head>
 <body style="background-color: #F599BE">
 <div id="particles-js"></div>

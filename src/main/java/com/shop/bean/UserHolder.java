@@ -1,7 +1,7 @@
 package com.shop.bean;
 
 
-import com.shop.model.User;
+import com.shop.core.model.User;
 
 /**
  * Created by quxiao on 2015/4/27.

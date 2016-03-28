@@ -5,15 +5,14 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <link type="text/css" rel="stylesheet" href="/asset/bootstrap/css/bootstrap.min.css"/>
     <link type="text/css" rel="stylesheet" href="/asset/bootstrap/css/bootstrap-theme.min.css"/>
-    <link rel="shortcut icon" href="/images/java.png"/>
+    <link rel="shortcut icon" href="/images/mz.png"/>
 </head>
 <body>
 <div class="container-fluid" align="center" style="background-color: #F599BE">
     <div style="color: black;font-size: 30px;align-content: center">编辑用户</div>
     <br/>
-    <form class="form-horizontal">
+    <form class="form-horizontal" action="/user/edit" method="post" enctype="multipart/form-data">
         <input id="id" type="hidden" value="$!{userVo.id}">
-        <input id="tagList" type="hidden" value="$!{userVo.tagList}">
         <div class="control-group">
             <label class="control-label" style="color: black;font-size: 15px;" for="username">用户名：</label>
             <div class="controls">
@@ -76,7 +75,9 @@
                 #end
             </div>
         </div>
-
+        <div style="color: black;font-size: 15px">上传头像：
+            <input id="file" type="file" name="file" placeholder="选择头像...">
+        </div>
         <div class="control-group">
             <label class="control-label" style="color: black;font-size: 15px;" for="intro">个人简介：</label>
             <div class="controls">
@@ -90,12 +91,6 @@
             <input id="save-btn" type="submit" value="保存"/>
         </div>
     </form>
-    <div>
-        <form id="container" action="/api/token/qiniuyun" method="post" enctype="multipart/form-data">
-            <input id="avatar" type="file" name="avatar">
-            <input type="submit" value="上传图片">
-        </form>
-    </div>
 </div>
 
 <script type="text/javascript" src="/asset/jquery/jquery-1.11.2.min.js"></script>

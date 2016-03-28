@@ -8,6 +8,7 @@
     <link type="text/css" rel="stylesheet" href="/css/simplePagination.css"/>
     <link type="text/css" rel="stylesheet" href="/css/style.css"/>
     <link type="text/css" rel="stylesheet" href="/css/online.css"/>
+    <link rel="shortcut icon" href="/images/mz.png"/>
 </head>
 <body style="background-color: #F599BE">
 <div id="particles-js"></div>
@@ -36,7 +37,7 @@
                 <input id="wechat" style="padding: 0px" name="wechat" placeholder="请输入微信号" type="text" value="$!{user.wechat}"/>
             </div>
             <div style="color: black;font-size: 15px">上传头像：
-                <input id="avatar" type="file" name="file" placeholder="选择头像...">
+                <input id="file" type="file" name="file" placeholder="选择头像...">
             </div>
             <div style="color: black;font-size: 15px">个人简介：
                 <input id="intro" style="padding: 0px" name="intro" placeholder="请简单介绍一下自己" type="text" value="$!{user.intro}"/>
