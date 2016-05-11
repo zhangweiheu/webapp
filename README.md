@@ -1,2 +1,2 @@
-# shop
-购物商城
+# webapp
+single springboot webapp with SSM
