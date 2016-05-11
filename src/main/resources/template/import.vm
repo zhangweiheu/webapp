@@ -1,0 +1,177 @@
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Data Cleaning System</title>
+    <style>
+        .font-size {
+            font-size: 30px;
+            border-radius: 5px;
+        }
+    </style>
+##    <script type="text/javascript">
+##        function getTime(){
+##            var url = location.search;
+##            $.ajax({
+##                type:"get",
+##                async:false,
+##                url:url,
+##                success:function(result){
+##
+##                    $("#TotalTime").attr("value",result);
+##                }
+##            });
+##        }
+##        </script>
+</head>
+<body bgcolor="#CFC">
+<div style="position: relative;top: 15%" align="center">
+    <span style="font-weight:bold;font-size: 25px;position: relative;top: -20px">基于知识库的数据清洗系统</span><br/>
+
+    <div class="file-box">
+        <form id="upload" method="post" action="/api/upload" enctype="multipart/form-data">
+            <input type="file" name="file" class="file" id="file" size="28"/>
+            <input type="submit" name="submit" class="btn" value="上传文件并处理数据"/>
+        </form>
+    </div>
+</div>
+<div style="position:absolute;top: 200px;left:530px" align="center">
+    <span style="font-weight: bold;font-size: 20px">Data Cleaning Results</span><br/>
+    </div>
+<div style="position:absolute;top:280px;left:270px" align="center">
+    <span style="font-weight:bold;font-size:15px">Before</span><br/>
+    </div>
+<div style="position:absolute;top:320px;left:270px" align="center">
+    <span style="font-weight:bold;font-size:15px">After</span>
+</div>
+
+<div style="position:absolute;top:250px;left:380px" align="center">
+    <span style="font-weight:bold;font-size:15px" class="label">Incompleteness</span><br/>
+    </div>
+<div style="position:absolute;top:280px;left:400px" align="center">
+    <input type="text" id="IMPBefore" value="" size="10">
+    </input>
+    </div>
+<div style="position:absolute;top:320px;left:400px" align="center">
+    <input type="text" id="IMPAfter" value="" size="10"/>
+    </div>
+<div style="position:absolute;top:250px;left:570px" align="center">
+    <span style="font-weight:bold;font-size:15px" class="label">Inconsistency</span><br/>
+</div>
+<div style="position:absolute;top:280px;left:590px" align="center">
+    <input type="text" id="ICNBefore" value="" size="10">
+    </input>
+</div>
+<div style="position:absolute;top:320px;left:590px" align="center">
+    <input type="text" id="ICNAfter" value="" size="10">
+    </input>
+</div>
+<div style="position:absolute;top:250px;left:770px" align="center">
+    <span style="font-weight:bold;font-size:15px" class="label">Same Entity</span><br/>
+</div>
+<div style="position:absolute;top:280px;left:780px" align="center">
+    <input type="text" id="SEBefore" value="" size="10">
+    </input>
+</div>
+<div style="position:absolute;top:320px;left:780px" align="center">
+    <input type="text" id="SEAfter" value="" size="10">
+    </input>
+</div>
+<div style="position:absolute;top:360px;left:420px" align="center">
+    <span style="font-weight:bold;font-size:15px" class="label">Total Size</span>
+    <input type="text" id="TotalSize" value="" size="10">
+    </input>
+    <span style="font-weight:bold;font-size:15px" class="label">Total Time</span>
+    <input type="text" id="TotalTime" value="" size="10">
+    </input><br/>
+</div>
+<div style="position:absolute;top:400px;left:780px" align="center">
+    <form id="download" action="/download" method="post">
+        <input id="tableNameNew" name="tableName" hidden="hidden">
+        <input id="rowsNew" name="rows" hidden="hidden">
+        <input id="columnsNew" name="columns" hidden="hidden">
+        <input id="outPath" name="outPath" hidden="hidden">
+        <input type="submit" class="btn" value="下载处理后的文件"/>
+    </form>
+</div>
+</body>
+<script type="text/javascript" src="/asset/jquery/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="/asset/jquery/jquery.form.js"></script>
+<script type="text/javascript" src="/asset/layer/layer.js"></script>
+<script type="text/javascript" src="/js/import.js"></script>
+</html>
+
+
+##<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+##<html xmlns="http://www.w3.org/1999/xhtml">
+##<head>
+##    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+##    <title>Data Cleaning System</title>
+##    <style type="text/css">
+##        body,td,th {
+##            font-size: 40px;
+##            color: #000;
+##        }
+##        body {
+##            background-color: #CFC;
+##            text-align: center;
+##            font-size: 20px;
+##        }
+##        #form1 p {
+##            font-size: 36px;
+##        }
+##    </style>
+##</head>
+##
+##<body>
+##<p>&nbsp;</p>
+##<p align="center">&nbsp;</p>
+##<p align="center"><strong style="font-size: 35px;"> 基于知识库的数据清洗系统</strong></p>
+##<p>&nbsp;</p>
+##<form id="form2" name="form2" enctype="multipart/form-data" method="post" action="/file">
+##    <p>
+##        <label for="file">选择文件</label>
+##        <input type="file" name="file" id="file" />
+##    </p>
+##</form>
+##<form id="form1" name="form1" method="post" action="">
+##    <p><span style="font-size: 20px">选择清洗方式
+##    <label>
+##        <input type="radio" name="RadioGroup1" value="单选" id="RadioGroup1_0" />
+##        推理式清洗
+##    </label>
+##    <label>
+##        <input type="radio" name="RadioGroup1" value="单选" id="RadioGroup1_1" />
+##        非推理式清洗</label>
+##    </span><br />
+##    </p>
+##</form>
+##<form id="form3" name="form3" method="post" action="">
+##    <p><span style="font-size: 20px">选择清洗类别
+##    <label>
+##        <input type="radio" name="RadioGroup2" value="单选" id="RadioGroup2_0" />
+##        缺失值填充</label>
+##    <label>
+##        <input type="radio" name="RadioGroup2" value="单选" id="RadioGroup2_1" />
+##        不一致值修复</label>
+##    <label>
+##        <input type="radio" name="RadioGroup2" value="单选" id="RadioGroup2_2" />
+##        实体识别</label>
+##  </span></p>
+##    <p><br />
+##    </p>
+##</form>
+##<form id="form4" name="form4" method="post" action="">
+##    <input type="submit" name="submit" id="submit" value="上传文件" />
+##    <label>
+##        <input type="submit" name="clean" id="clean" value="开始清洗" />
+##    </label>
+##    <a href="IMP.vm"><input type="button" name="check" id="check" value="查看清洗结果"/></a>
+##</form>
+##<p style="font-size:25px">&nbsp;</p>
+##<p style="font-size:25px">&nbsp;</p>
+##<p style="font-size: 36px">&nbsp;</p>
+##<p style="font-size: 36px">&nbsp;</p>
+##<p>&nbsp; </p>
+##<p>&nbsp; </p>
+##</body>
+##</html>
+
