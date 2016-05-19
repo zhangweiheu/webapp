@@ -22,8 +22,18 @@ public class DataController {
     //    DataService dataService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String file() {
+    public String importfile() {
         return "import";
+    }
+
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String index() {
+        return "import";
+    }
+
+    @RequestMapping(value = "/data", method = RequestMethod.GET)
+    public String data() {
+        return "data";
     }
 
     @RequestMapping(value = "/download", method = RequestMethod.POST)

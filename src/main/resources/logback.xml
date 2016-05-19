@@ -1,13 +1,13 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="true">
 
     <property name="LOG_STORE_DAYS" value="30" />
-    <contextName>shop-webapp</contextName>
+    <contextName>data-webapp</contextName>
 
     <!-- 按照每天生成日志文件 -->
     <appender name="FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>D:/log-shop/stdout.log</file>
+        <file>/var/log/data/webapp-stdout.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>/shop-webapp-stdout.log.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>/var/log/data/webapp-stdout.log.%d{yyyy-MM-dd}.log</FileNamePattern>
             <MaxHistory>${LOG_STORE_DAYS}</MaxHistory>
         </rollingPolicy>
 
@@ -23,9 +23,9 @@
     <!-- 按照每天生成error文件 -->
     <appender name="ERRORFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
 
-        <file>D:/log-shop/shop-webapp-error.log</file>
+        <file>/var/log/data/webapp-error.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>/shop-webapp-error.log.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>/var/log/data/webapp-error.log.%d{yyyy-MM-dd}.log</FileNamePattern>
             <MaxHistory>${LOG_STORE_DAYS}</MaxHistory>
         </rollingPolicy>
 

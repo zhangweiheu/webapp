@@ -4,6 +4,7 @@
 package com.data.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -21,17 +22,19 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 public class CoreDataSourceConfiguration implements TransactionManagementConfigurer {
-    public static final String ONLINE_EXAMS_TM = "online_exams_tm";
+    public static final String ONLINE_EXAMS_TM = "com_data_tm";
+
+    @Autowired
+    private CoreProperties coreProperties;
 
     @Bean(destroyMethod = "close")
     public DataSource core_dataSource() {
         DruidDataSource druidDataSource = new DruidDataSource();
         try {
-            druidDataSource.setUsername("zhangwei");
-            druidDataSource.setPassword("zhangwei");
-            druidDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-//            druidDataSource.setUrl("jdbc:mysql://45.32.47.210:3306/graduation?autoCommit=true&autoReconnect=true&useUnicode=true&tinyInt1isBit=false&zeroDateTimeBehavior=round&characterEncoding=UTF-8&yearIsDateType=false");
-            druidDataSource.setUrl("jdbc:mysql://192.168.1.115:3306/ssh?autoCommit=true&autoReconnect=true&useUnicode=true&tinyInt1isBit=false&zeroDateTimeBehavior=round&characterEncoding=UTF-8&yearIsDateType=false");
+            druidDataSource.setUsername(coreProperties.getDbUsername());
+            druidDataSource.setPassword(coreProperties.getDbPassword());
+            druidDataSource.setDriverClassName(coreProperties.getDbDriver());
+            druidDataSource.setUrl(coreProperties.getJdbcUrl());
             druidDataSource.setConnectionProperties("druid.stat.mergeSql=true");
             druidDataSource.setFilters("stat,wall"); // 配置监控统计拦截的filters
             druidDataSource.setInitialSize(10);// 配置初始化大小、最小、最大
@@ -40,7 +43,7 @@ public class CoreDataSourceConfiguration implements TransactionManagementConfigu
             druidDataSource.setMaxWait(60000); // 配置获取连接等待超时的时间
             druidDataSource.setTimeBetweenEvictionRunsMillis(60000);// 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
             druidDataSource.setMinEvictableIdleTimeMillis(300000); // 配置一个连接在池中最小生存的时间，单位是毫秒
-            druidDataSource.setValidationQuery("SELECT 'x'");
+            druidDataSource.setValidationQuery(coreProperties.getDbTestQuery());
             druidDataSource.setTestWhileIdle(true);
             druidDataSource.setTestOnBorrow(false);
             druidDataSource.setTestOnReturn(false);

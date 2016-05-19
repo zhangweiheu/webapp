@@ -28,7 +28,7 @@ import java.util.Properties;
  */
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan(basePackageClasses = {com.data.controller.Pkg.class})
+@ComponentScan(basePackageClasses = {com.data.dao.Pkg.class,com.data.service.Pkg.class,com.data.controller.Pkg.class})
 public class WebappConfiguration extends AbstractWebMvcConfiguration {
 
     @Configuration
@@ -69,37 +69,37 @@ public class WebappConfiguration extends AbstractWebMvcConfiguration {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/css/**").addResourceLocations("classpath:/static/css/");
-        registry.addResourceHandler("/js/**").addResourceLocations("classpath:/static/js/");
-        registry.addResourceHandler("/asset/**").addResourceLocations("classpath:/static/asset/");
-        registry.addResourceHandler("/images/**").addResourceLocations("classpath:/static/images/");
+        registry.addResourceHandler("/static/css/**").addResourceLocations("classpath:/static/css/");
+        registry.addResourceHandler("/static/js/**").addResourceLocations("classpath:/static/js/");
+        registry.addResourceHandler("/static/asset/**").addResourceLocations("classpath:/static/asset/");
+        registry.addResourceHandler("/static/images/**").addResourceLocations("classpath:/static/images/");
     }
-
-    @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
-        registry.viewResolver(velocityViewResolver());
-    }
-
-    @Bean
-    public VelocityViewResolver velocityViewResolver() {
-        VelocityViewResolver velocityViewResolver = new VelocityViewResolver();
-        velocityViewResolver.setCache(false);
-        velocityViewResolver.setOrder(10);
-        velocityViewResolver.setSuffix(".vm");
-        velocityViewResolver.setContentType("text/html;charset=UTF-8");
-        return velocityViewResolver;
-    }
-
-    @Bean
-    public VelocityConfigurer velocityConfigurer() {
-        VelocityConfigurer configurer = new VelocityConfigurer();
-        configurer.setResourceLoaderPath("classpath:/template/");
-        Properties properties = new Properties();
-        properties.put("input.encoding", "UTF-8");
-        properties.put("output.encoding", "UTF-8");
-        configurer.setVelocityProperties(properties);
-        return configurer;
-    }
+//
+//    @Override
+//    public void configureViewResolvers(ViewResolverRegistry registry) {
+//        registry.viewResolver(velocityViewResolver());
+//    }
+//
+//    @Bean
+//    public VelocityViewResolver velocityViewResolver() {
+//        VelocityViewResolver velocityViewResolver = new VelocityViewResolver();
+//        velocityViewResolver.setCache(false);
+//        velocityViewResolver.setOrder(10);
+//        velocityViewResolver.setSuffix(".vm");
+//        velocityViewResolver.setContentType("text/html;charset=UTF-8");
+//        return velocityViewResolver;
+//    }
+//
+//    @Bean
+//    public VelocityConfigurer velocityConfigurer() {
+//        VelocityConfigurer configurer = new VelocityConfigurer();
+//        configurer.setResourceLoaderPath("classpath:/template/");
+//        Properties properties = new Properties();
+//        properties.put("input.encoding", "UTF-8");
+//        properties.put("output.encoding", "UTF-8");
+//        configurer.setVelocityProperties(properties);
+//        return configurer;
+//    }
 
     @Bean
     public CommonsMultipartResolver multipartResolver() {

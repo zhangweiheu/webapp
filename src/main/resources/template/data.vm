@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>系统 | 主页</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../static/asset/bootstrap/css/bootstrap.css"/>
+    <style>
+        .node {
+            stroke: #fff;
+            stroke-width: 1.5px;
+        }
+
+        .link {
+            stroke: #999;
+            stroke-opacity: .6;
+        }
+
+    </style>
+</head>
+<body style="overflow: auto">
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <h3 class="text-center">
+                Replacing the Irreplaceable: Fast Algorithms for Team Member Recommendation
+            </h3>
+        </div>
+    </div>
+    <div id="legend" class="">
+        <legend class=""></legend>
+    </div>
+    <div class="row-fluid">
+        <div style="margin-left: 40%">
+            <form class="form-horizontal" enctype ="multipart/form-data">
+                <fieldset style="padding-bottom: 20px">
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="control-label">算法选择:</label>
+                            <select class="input-xlarge" name="algorithms">
+                                <option value="A">基础算法：Score label direct recommend</option>
+                                <option value="B">改进算法1：Score label fast exact</option>
+                                <option value="C">改进算法2：Score label fast approx</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="control-label">社会网络:</label>
+                            <input class="input-file" id="socialNet" name="socialNet" type="file">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="control-label">技能网络:</label>
+                            <input class="input-file" id="skillMatrix" name="skillMatrix" type="file">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="control-label">当前团队:</label>
+                            <input class="input-file" id="currentTeam" name="currentTeam" type="file">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="control-label">离开成员编号:</label>
+                            <input type="text" placeholder="离开成员" name="separatingEmployee" class="input-xlarge">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="checkbox"><input type="checkbox" name="prune"/>是否采用剪枝策略</label>
+                        </div>
+                    </div>
+                    <div class="control-group" style="margin-left: 10%;margin-top: 2%">
+                        <div class="controls">
+                            <input id="submit_btn" class="btn btn-success" type="button" value="提交">
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <div class="control-group">
+                <div class="controls">
+                    <label class="control-label">运行时间:</label>
+                    <input type="text" placeholder="秒" class="input-xlarge">
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">候选者:</label>
+                <ol contenteditable="true" id="ol">
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="Graph"></div>
+<script type="text/javascript" src="../static/asset/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="../static/asset/jquery/jquery.form.js"></script>
+<script type="text/javascript" src="../static/asset/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="../static/asset/D3/d3.js"></script>
+<script type="text/javascript" src="../static/asset/layer/layer.js"></script>
+<script type="text/javascript" src="../static/js/data.js"></script>
+</body>
+</html>

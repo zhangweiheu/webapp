@@ -13,9 +13,9 @@ import org.springframework.context.annotation.Import;
 @Import(CoreDataSourceConfiguration.class)
 @MapperScan(basePackageClasses = {com.data.mapper.Pkg.class}, sqlSessionFactoryRef = MyBatisConfiguration.SQL_SESSION_FACTORY_NAME)
 public class MyBatisConfiguration {
-    public static final String SQL_SESSION_FACTORY_NAME = "exams_online_SqlSessionFactory";
+    public static final String SQL_SESSION_FACTORY_NAME = "com_data_SqlSessionFactory";
 
-    private String enumBasePackages = "enums";
+    private String enumBasePackages = "com.data.enums";
 
     @Bean(name = MyBatisConfiguration.SQL_SESSION_FACTORY_NAME)
     public MybatisSqlSessionFactoryBean exams_online_MybatisSqlSessionFactoryBean(CoreDataSourceConfiguration config) {
