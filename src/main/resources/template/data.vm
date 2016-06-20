@@ -85,7 +85,7 @@
             <div class="control-group">
                 <div class="controls">
                     <label class="control-label">运行时间:</label>
-                    <input type="text" placeholder="秒" class="input-xlarge">
+                    <input id="time" type="text" placeholder="秒" class="input-xlarge">
                     <p class="help-block"></p>
                 </div>
             </div>

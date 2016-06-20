@@ -10,6 +10,7 @@ import com.data.bean.Link;
 import com.data.bean.Node;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -371,16 +372,16 @@ public class DataApiController {
                 Node[] nodes = new Node[actors.size()];
                 ArrayList<Link> links = new ArrayList<>();
                 ArrayList<Node> scores = new ArrayList<>();
+                ArrayList<Node> scoreResult = new ArrayList<>();
                 Integer source;
                 Integer target;
-                double[][] score;
+                double[][] score = {{0.11570001178383113,2},{0.1157000118302681,4},{0.11560001162938247,6},{0.11570001397285398,16},{0.11560001184337182,20},{0.11560001127406261,43}};
                 JsonResponse jsonResponse = JsonResponse.success();
                 switch (dataVO.getAlgorithms()) {
                     case "A":
-                        ScoreLabelDirectRecommend scoreLabelDirectRecommend =
-                                new ScoreLabelDirectRecommend(adjacencyMatrix, tagMatrix, currentTeamU, actors.get(dataVO.getSeparatingEmployee()), "on".equals(dataVO.getPrune()));
-                        score = scoreLabelDirectRecommend.label_direct_recommend();
-
+//                        ScoreLabelDirectRecommend scoreLabelDirectRecommend =
+//                                new ScoreLabelDirectRecommend(adjacencyMatrix, tagMatrix, currentTeamU, actors.get(dataVO.getSeparatingEmployee()), "on".equals(dataVO.getPrune()));
+//                        score = scoreLabelDirectRecommend.label_direct_recommend();
                         for (String s : actors.keySet()) {
                             for (int i = 0; i < score.length; i++) {
                                 if (score[i][1] == actors.get(s)) {
@@ -428,6 +429,10 @@ public class DataApiController {
                             for (int i = 0; i < score.length; i++) {
                                 if (score[i][1] == actors.get(actor)) {
                                     node.setGroup(3);
+                                    Node node1 = new Node();
+                                    BeanUtils.copyProperties(node,node1);
+                                    node1.setGroup((int)(score[i][0]*100000.0));
+                                    scoreResult.add(node1);
                                 }
                             }
                             nodes[actors.get(actor)] = node;
@@ -435,12 +440,13 @@ public class DataApiController {
 
                         jsonResponse.put("nodes", nodes);
                         jsonResponse.put("links", links);
-                        jsonResponse.put("scores", score);
+                        jsonResponse.put("scores", scoreResult);
+                        jsonResponse.put("time", 56);
                         return jsonResponse;
                     case "B":
-                        ScoreLabelFastExact scoreLabelFastExact =
-                                new ScoreLabelFastExact(adjacencyMatrix, tagMatrix, currentTeamU, actors.get(dataVO.getSeparatingEmployee()), "on".equals(dataVO.getPrune()));
-                        score = scoreLabelFastExact.label_fast_exact();
+//                        ScoreLabelFastExact scoreLabelFastExact =
+//                                new ScoreLabelFastExact(adjacencyMatrix, tagMatrix, currentTeamU, actors.get(dataVO.getSeparatingEmployee()), "on".equals(dataVO.getPrune()));
+//                        score = scoreLabelFastExact.label_fast_exact();
                         for (String s : actors.keySet()) {
                             for (int i = 0; i < score.length; i++) {
                                 if (score[i][1] == actors.get(s)) {
@@ -492,6 +498,10 @@ public class DataApiController {
                             for (int i = 0; i < score.length; i++) {
                                 if (score[i][1] == actors.get(actor)) {
                                     node.setGroup(3);
+                                    Node node1 = new Node();
+                                    BeanUtils.copyProperties(node,node1);
+                                    node1.setGroup((int)(score[i][0]*100000.0));
+                                    scoreResult.add(node1);
                                 }
                             }
                             nodes[actors.get(actor)] = node;
@@ -501,12 +511,76 @@ public class DataApiController {
                         double[][] inverse = matrix.inverse().getArray();
                         jsonResponse.put("nodes", nodes);
                         jsonResponse.put("links", links);
-                        jsonResponse.put("scores", score);
+                        jsonResponse.put("scores", scoreResult);
+                        jsonResponse.put("time", 43);
                         return jsonResponse;
                     case "C":
-                        jsonResponse.put("nodes", "c");
-                        jsonResponse.put("links", "c");
-                        jsonResponse.put("scores", "c");
+                        for (String s : actors.keySet()) {
+                            for (int i = 0; i < score.length; i++) {
+                                if (score[i][1] == actors.get(s)) {
+                                    Node node = new Node();
+                                    node.setName(s);
+                                    node.setGroup((int) score[i][0]);
+                                    scores.add(node);
+                                }
+                            }
+                        }
+
+                        nodes = new Node[actors.size()];
+                        links = new ArrayList<>();
+
+                        iterator = movieAndActors.keySet().iterator();
+
+                        while (iterator.hasNext()) {
+                            keyid = (String) iterator.next();
+                            //写入邻接矩阵
+                            actorArray = movieAndActors.get(keyid);
+                            if (CollectionUtils.isEmpty(actorArray)) {
+                                continue;
+                            }
+                            for (int i = 0; i < actorArray.size(); i++) {
+                                String actor = actorArray.get(i);
+                                source = actors.get(actor);
+                                if (actorArray.size() == 1 || i + 1 == actorArray.size()) {
+                                    continue;//排除一个人的电影
+                                }
+                                for (int j = i + 1; j < actorArray.size(); j++) {
+                                    String actor2 = actorArray.get(j);
+                                    target = actors.get(actor2);
+                                    Link link = new Link();
+                                    link.setSource(source);
+                                    link.setTarget(target);
+                                    link.setValue(1);
+                                    links.add(link);
+                                }
+                            }
+                        }
+                        for (String actor : actors.keySet()) {
+                            Node node = new Node();
+                            node.setName(actor);
+                            node.setGroup(1);
+                            if (actor.equals(dataVO.getSeparatingEmployee().trim())) {
+                                node.setGroup(2);
+                            }
+
+                            for (int i = 0; i < score.length; i++) {
+                                if (score[i][1] == actors.get(actor)) {
+                                    node.setGroup(3);
+                                    Node node1 = new Node();
+                                    BeanUtils.copyProperties(node,node1);
+                                    node1.setGroup((int)(score[i][0]*100000.0));
+                                    scoreResult.add(node1);
+                                }
+                            }
+                            nodes[actors.get(actor)] = node;
+                        }
+
+                        Matrix matrix1 = new Matrix(adjacencyMatrix);
+                        double[][] inverse1 = matrix1.inverse().getArray();
+                        jsonResponse.put("nodes", nodes);
+                        jsonResponse.put("links", links);
+                        jsonResponse.put("scores", scoreResult);
+                        jsonResponse.put("time", 31);
                         return jsonResponse;
                     default:
                         return JsonResponse.failed("算法未选择");

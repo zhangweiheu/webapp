@@ -16,6 +16,7 @@ $("#submit_btn").on("click", function () {
                     olbody += "<li>" +scores[i].name +"："+scores[i].group+"</li>";
                 }
                 $("#ol").html(olbody);
+                $("#time").val(data.data.time);
                 dataGraph(data.data);
             } else {
                 layer.alert(data.msg, {icon: 11});
